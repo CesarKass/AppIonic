@@ -46,19 +46,17 @@ export class CarsService {
       })
     }
   }
-  addCars(marca: any, modelo: any, anio: any, tipo: any, img: any) {
-    this.cars.push({
-      "id": this.cars.length + 1 + '',
-      "marca": marca,
-      "modelo": modelo,
-      "anio": anio,
-      "tipo": tipo,
-      "featurs": [],
-      "img": img
-    });
+  addCars(car:Car) {
+    car.id = this.cars.length + 1 + "";
+    this.cars.push(car);
   }
-  editCars() {
-
+  updateCar(carID: string, modelActualizar:any) {
+    let i = parseInt(carID); 
+    for (let index = 0; index < this.cars.length; index++) { 
+     if(parseInt(this.cars[index].id) === i){ 
+      this.cars[index] = modelActualizar;  
+     } 
+    }
   }
   deleteCars(carID: string) {
     this.cars = this.cars.filter(car => {

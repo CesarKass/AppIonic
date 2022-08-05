@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/cars">
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Car</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-content>
+          <ion-input type="text" placeholder="Marca" #marca [(ngModel)]="car.marca"></ion-input>
+          <ion-input type="text" placeholder="Modelo" #modelo [(ngModel)]="car.modelo"></ion-input>
+          <ion-input type="number" placeholder="Año" #anio [(ngModel)]="car.anio"></ion-input>
+          <ion-input type="text" placeholder="Tipo" #tipo [(ngModel)]="car.tipo"></ion-input>
+          <ion-input type="text" placeholder="img" #img [(ngModel)]="car.img"></ion-input>
+          <ion-button color="warning" (click)="updateCar(marca,modelo,anio,tipo,img)">
+            Save car
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

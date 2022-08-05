@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CarsService } from '../../services/cars.service';
 import { Car } from '../../models/cars.model';
-import { AlertController} from '@ionic/angular'
+import { AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-cars-details',
@@ -20,12 +20,20 @@ export class CarsDetailsPage implements OnInit {
 
   ngOnInit() {
     this._activatedRoute.paramMap.subscribe(paramMap => {
-      const id = paramMap.get('carID');
-      console.log(id);
-      
-      this.car = this.carsService.getCar(id);
-      console.log(this.car);
+      const id = paramMap.get('carID'); 
+      this.car = this.carsService.getCar(id); 
     })
+  }
+  
+  ionViewWillEnter(){
+    this._activatedRoute.paramMap.subscribe(paramMap => {
+      const id = paramMap.get('carID'); 
+      this.car = this.carsService.getCar(id); 
+    })
+  }
+
+  editCar(id:any){
+    this._router.navigate(['/car-edit', id]);
   }
 
   async deleteCar(id:any){
@@ -53,9 +61,5 @@ export class CarsDetailsPage implements OnInit {
     await alerta.present();
    
   }
-
-
-
-  
-
+ 
 }
